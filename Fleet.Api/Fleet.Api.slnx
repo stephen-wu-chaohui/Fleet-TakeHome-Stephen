@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../Fleet.Api.Tests/Fleet.Api.Tests.csproj" Id="59f46941-5b7f-4113-b721-1440e91c5594" />
+  <Project Path="Fleet.Api.csproj" />
+</Solution>

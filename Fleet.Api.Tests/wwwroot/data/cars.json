@@ -1,0 +1,100 @@
+[
+  {
+    "Id": 1,
+    "Make": "Mitsubishi",
+    "Model": "Outlander",
+    "RegistrationNumber": "QVQ460",
+    "RegistrationExpiry": "2025-08-30T23:51:00.7964913Z"
+  },
+  {
+    "Id": 2,
+    "Make": "Kia",
+    "Model": "Sportage",
+    "RegistrationNumber": "WUH707",
+    "RegistrationExpiry": "2025-11-19T23:52:00.7965664Z"
+  },
+  {
+    "Id": 3,
+    "Make": "Toyota",
+    "Model": "Camry",
+    "RegistrationNumber": "EGH880",
+    "RegistrationExpiry": "2025-08-09T23:51:00.7965686Z"
+  },
+  {
+    "Id": 4,
+    "Make": "Ford",
+    "Model": "Ranger",
+    "RegistrationNumber": "HIH126",
+    "RegistrationExpiry": "2025-07-31T23:51:00.7965694Z"
+  },
+  {
+    "Id": 5,
+    "Make": "Nissan",
+    "Model": "Navara",
+    "RegistrationNumber": "RJC677",
+    "RegistrationExpiry": "2025-11-20T00:01:00.7965697Z"
+  },
+  {
+    "Id": 6,
+    "Make": "Toyota",
+    "Model": "Hilux",
+    "RegistrationNumber": "NLI838",
+    "RegistrationExpiry": "2025-11-19T23:52:00.7965705Z"
+  },
+  {
+    "Id": 7,
+    "Make": "Nissan",
+    "Model": "Navara",
+    "RegistrationNumber": "PDX434",
+    "RegistrationExpiry": "2025-11-20T00:00:00.7965707Z"
+  },
+  {
+    "Id": 8,
+    "Make": "Volkswagen",
+    "Model": "Amarok",
+    "RegistrationNumber": "AOJ485",
+    "RegistrationExpiry": "2025-11-19T23:56:00.7965709Z"
+  },
+  {
+    "Id": 9,
+    "Make": "Subaru",
+    "Model": "XV",
+    "RegistrationNumber": "YEL177",
+    "RegistrationExpiry": "2025-11-19T23:56:00.7965711Z"
+  },
+  {
+    "Id": 10,
+    "Make": "Subaru",
+    "Model": "XV",
+    "RegistrationNumber": "BZZ963",
+    "RegistrationExpiry": "2025-11-14T23:51:00.7965715Z"
+  },
+  {
+    "Id": 11,
+    "Make": "Subaru",
+    "Model": "Forester",
+    "RegistrationNumber": "VVF262",
+    "RegistrationExpiry": "2025-11-19T23:58:00.7965718Z"
+  },
+  {
+    "Id": 12,
+    "Make": "Volkswagen",
+    "Model": "Amarok",
+    "RegistrationNumber": "NFY903",
+    "RegistrationExpiry": "2025-11-19T23:59:00.796572Z"
+  },
+  {
+    "Id": 13,
+    "Make": "Subaru",
+    "Model": "XV",
+    "RegistrationNumber": "BYV519",
+    "RegistrationExpiry": "2025-11-19T23:56:00.7965722Z"
+  },
+  {
+    "Id": 14,
+    "Make": "Nissan",
+    "Model": "X-Trail",
+    "RegistrationNumber": "VTA593",
+    "RegistrationExpiry": "2025-10-31T23:51:00.7965724Z"
+  }
+]

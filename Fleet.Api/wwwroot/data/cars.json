@@ -1,0 +1,79 @@
+[
+  {
+    "Id": 1,
+    "Make": "Subaru",
+    "Model": "XV",
+    "RegistrationNumber": "WSV665",
+    "RegistrationExpiry": "2025-08-31T05:33:35.5307929Z"
+  },
+  {
+    "Id": 2,
+    "Make": "Volkswagen",
+    "Model": "Amarok",
+    "RegistrationNumber": "YDD891",
+    "RegistrationExpiry": "2025-11-20T05:43:35.5308778Z"
+  },
+  {
+    "Id": 3,
+    "Make": "Mitsubishi",
+    "Model": "ASX",
+    "RegistrationNumber": "KZR763",
+    "RegistrationExpiry": "2025-11-20T05:38:35.5308802Z"
+  },
+  {
+    "Id": 4,
+    "Make": "Mazda",
+    "Model": "BT-50",
+    "RegistrationNumber": "LTA872",
+    "RegistrationExpiry": "2025-10-27T05:33:35.5308819Z"
+  },
+  {
+    "Id": 5,
+    "Make": "Mitsubishi",
+    "Model": "Outlander",
+    "RegistrationNumber": "CTD686",
+    "RegistrationExpiry": "2025-11-20T05:37:35.5308822Z"
+  },
+  {
+    "Id": 6,
+    "Make": "Subaru",
+    "Model": "Outback",
+    "RegistrationNumber": "UTL472",
+    "RegistrationExpiry": "2025-11-08T05:33:35.5308829Z"
+  },
+  {
+    "Id": 7,
+    "Make": "Toyota",
+    "Model": "Hilux",
+    "RegistrationNumber": "BFG510",
+    "RegistrationExpiry": "2025-11-20T05:39:35.5308832Z"
+  },
+  {
+    "Id": 8,
+    "Make": "Mazda",
+    "Model": "Mazda3",
+    "RegistrationNumber": "ONC397",
+    "RegistrationExpiry": "2025-11-20T05:37:35.5308835Z"
+  },
+  {
+    "Id": 9,
+    "Make": "Kia",
+    "Model": "Sportage",
+    "RegistrationNumber": "CQJ520",
+    "RegistrationExpiry": "2025-11-20T05:43:35.5308839Z"
+  },
+  {
+    "Id": 10,
+    "Make": "Nissan",
+    "Model": "Qashqai",
+    "RegistrationNumber": "HRF945",
+    "RegistrationExpiry": "2025-10-14T05:33:35.5308842Z"
+  },
+  {
+    "Id": 11,
+    "Make": "Kia",
+    "Model": "Sorento",
+    "RegistrationNumber": "MNA794",
+    "RegistrationExpiry": "2025-11-20T05:34:35.5308845Z"
+  }
+]

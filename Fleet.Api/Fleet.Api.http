@@ -1,0 +1,9 @@
+@Fleet.Api_HostAddress = https://localhost:5001
+
+GET {{Fleet.Api_HostAddress}}/api/cars/
+Accept: application/json
+
+GET {{Fleet.Api_HostAddress}}/api/registration/
+Accept: application/json
+
+###
