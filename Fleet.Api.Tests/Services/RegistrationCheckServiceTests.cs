@@ -1,50 +1,74 @@
-using System;
-using System.Threading.Tasks;
-using Xunit;
 using Fleet.Api.Hubs;
 using Fleet.Api.Services;
-using Fleet.Api.Tests.Mocks;
+using Fleet.Api.Tests.Fakes;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging.Abstractions;
+using Moq;
 
-namespace Fleet.Api.Tests.Services
-{
-    public class RegistrationCheckServiceTests
-    {
-        [Fact]
-        public async Task Broadcasts_ExpiredCars()
-        {
-            var repo = new MockCarRepository {
-                LastCheckPoint = DateTime.UtcNow.AddMinutes(-10)
-            };
-            repo.Cars[1].RegistrationExpiry = DateTime.UtcNow.AddSeconds(-1);
+namespace Fleet.Api.Tests;
 
-            var hub = new FakeHubContext<RegistrationHub>();
-            var logger = NullLogger<RegistrationCheckService>.Instance;
+public class RegistrationCheckServiceTests {
+    private class ServiceTestContext {
+        public Mock<IHubClients> HubClients { get; }
+        public Mock<IClientProxy> ClientProxy { get; }
+        public Mock<IHubContext<RegistrationHub>> HubContext { get; }
 
-            var svc = new RegistrationCheckService(logger, repo, hub);
+        public ServiceTestContext() {
+            HubClients = new Mock<IHubClients>();
+            ClientProxy = new Mock<IClientProxy>();
+            HubContext = new Mock<IHubContext<RegistrationHub>>();
 
-            await svc.UpdateRegistrationStatus(CancellationToken.None);
-
-            var msg = ((FakeHubContext<RegistrationHub>.FakeClientProxy)hub.Clients.All).LastMessage;
-
-            Assert.NotNull(msg);
+            HubClients.Setup(c => c.All).Returns(ClientProxy.Object);
+            HubContext.Setup(c => c.Clients).Returns(HubClients.Object);
         }
+    }
 
-        [Fact]
-        public async Task Updates_LastCheckPoint()
-        {
-            var repo = new MockCarRepository();
-            var hub = new FakeHubContext<RegistrationHub>();
-            var logger = NullLogger<RegistrationCheckService>.Instance;
+    [Fact]
+    public async Task CheckRegistrationsOnce_BroadcastsExpiryUpdates() {
+        // Arrange
+        var logger = NullLogger<RegistrationCheckService>.Instance;
+        var repo = new FakeCarRepositoryExpiry();
+        var ctx = new ServiceTestContext();
+        var stoppingToken = CancellationToken.None;
 
-            var svc = new RegistrationCheckService(logger, repo, hub);
+        var service = new RegistrationCheckService(logger, repo, ctx.HubContext.Object);
 
-            var before = repo.LastCheckPoint;
+        // Act — first run sends an update (one expired)
+        await service.CheckRegistrationsOnce(stoppingToken);
 
-            await Task.Delay(20);
-            await svc.UpdateRegistrationStatus(CancellationToken.None);
+        // Assert — Verify SignalR broadcast
+        ctx.ClientProxy.Verify(
+            x => x.SendCoreAsync(
+                "RegistrationStatusUpdated",
+                It.IsAny<object[]>(),
+                default),
+            Times.Once);
+    }
 
-            Assert.True(repo.LastCheckPoint > before);
-        }
+    [Fact]
+    public async Task CheckRegistrationsOnce_DoesNotBroadcast_WhenNoNewExpiry() {
+        // Arrange
+        var logger = NullLogger<RegistrationCheckService>.Instance;
+        var repo = new FakeCarRepositoryExpiry();
+        var ctx = new ServiceTestContext();
+        var service = new RegistrationCheckService(logger, repo, ctx.HubContext.Object);
+        var stoppingToken = CancellationToken.None;
+
+        // First run (consumes first batch)
+        await service.CheckRegistrationsOnce(stoppingToken);
+
+        // Reset calls
+        ctx.ClientProxy.Invocations.Clear();
+
+        // Act — second run (no updates)
+        await service.CheckRegistrationsOnce(stoppingToken);
+
+        // Assert
+        ctx.ClientProxy.Verify(
+            x => x.SendCoreAsync(
+                "RegistrationStatusUpdated",
+                It.IsAny<object[]>(),
+                default),
+            Times.Never);
     }
 }

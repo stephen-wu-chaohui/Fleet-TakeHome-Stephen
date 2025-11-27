@@ -27,36 +27,48 @@ public static class JsonDataSeeder {
     private static readonly Random Rng = new();
 
     public static void CreateCarDataFile(IWebHostEnvironment env) {
-        var dataFolder = Path.Combine(env.ContentRootPath, "wwwroot", "data");
-        Directory.CreateDirectory(dataFolder);
+        try {
+            var dataFolder = Path.Combine(env.ContentRootPath, "wwwroot", "data");
+            Directory.CreateDirectory(dataFolder);
 
-        var filePath = Path.Combine(dataFolder, "cars.json");
+            var filePath = Path.Combine(dataFolder, "cars.json");
 
-        int count = Rng.Next(8, 20); // generate between 8–20 cars
+            int count = Rng.Next(8, 20); // generate between 8–20 cars
 
-        var cars = new List<Car>();
+            var cars = new List<Car>();
 
-        for (int i = 1; i <= count; i++) {
-            string make = Makes[Rng.Next(Makes.Length)];
-            string model = Models[make][Rng.Next(Models[make].Length)];
+            for (int i = 1; i <= count; i++) {
+                string make = Makes[Rng.Next(Makes.Length)];
+                string model = Models[make][Rng.Next(Models[make].Length)];
 
-            var car = new Car {
-                Id = i,
-                Make = make,
-                Model = model,
-                RegistrationNumber = GeneratePlate(),
-                RegistrationExpiry = GenerateExpiry()
-            };
+                var car = new Car {
+                    Id = i,
+                    Make = make,
+                    Model = model,
+                    Plate = GeneratePlate(),
+                    RegistrationExpiry = GenerateExpiry()
+                };
 
-            cars.Add(car);
+                cars.Add(car);
+            }
+
+            var json = JsonSerializer.Serialize(
+                cars,
+                new JsonSerializerOptions { WriteIndented = true }
+            );
+
+            File.WriteAllText(filePath, json);
+        } catch (Exception ex) {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Fleet.Api failed during JSON seeding:");
+            Console.ResetColor();
+
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+
+            // Stop the app.
+            throw;
         }
-
-        var json = JsonSerializer.Serialize(
-            cars,
-            new JsonSerializerOptions { WriteIndented = true }
-        );
-
-        File.WriteAllText(filePath, json);
     }
 
     private static string GeneratePlate() {

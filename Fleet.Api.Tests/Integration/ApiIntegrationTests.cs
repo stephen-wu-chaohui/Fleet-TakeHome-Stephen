@@ -1,9 +1,5 @@
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Xunit;
+using System.Net.Http.Json;
 
 namespace Fleet.Api.Tests.Integration
 {

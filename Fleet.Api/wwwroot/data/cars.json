@@ -1,79 +1,128 @@
 [
   {
     "Id": 1,
-    "Make": "Subaru",
-    "Model": "XV",
-    "RegistrationNumber": "WSV665",
-    "RegistrationExpiry": "2025-08-31T05:33:35.5307929Z"
+    "Make": "Nissan",
+    "Model": "Qashqai",
+    "Plate": "GOU924",
+    "RegistrationExpiry": "2025-11-27T14:36:59.4426872Z"
   },
   {
     "Id": 2,
-    "Make": "Volkswagen",
-    "Model": "Amarok",
-    "RegistrationNumber": "YDD891",
-    "RegistrationExpiry": "2025-11-20T05:43:35.5308778Z"
+    "Make": "Kia",
+    "Model": "Cerato",
+    "Plate": "QBC696",
+    "RegistrationExpiry": "2025-11-11T14:35:59.442742Z"
   },
   {
     "Id": 3,
-    "Make": "Mitsubishi",
-    "Model": "ASX",
-    "RegistrationNumber": "KZR763",
-    "RegistrationExpiry": "2025-11-20T05:38:35.5308802Z"
+    "Make": "Ford",
+    "Model": "Focus",
+    "Plate": "GJJ440",
+    "RegistrationExpiry": "2025-11-27T14:36:59.442743Z"
   },
   {
     "Id": 4,
-    "Make": "Mazda",
-    "Model": "BT-50",
-    "RegistrationNumber": "LTA872",
-    "RegistrationExpiry": "2025-10-27T05:33:35.5308819Z"
+    "Make": "Volkswagen",
+    "Model": "Golf",
+    "Plate": "YUF113",
+    "RegistrationExpiry": "2025-10-09T14:35:59.4427432Z"
   },
   {
     "Id": 5,
-    "Make": "Mitsubishi",
-    "Model": "Outlander",
-    "RegistrationNumber": "CTD686",
-    "RegistrationExpiry": "2025-11-20T05:37:35.5308822Z"
+    "Make": "Ford",
+    "Model": "Everest",
+    "Plate": "EXK475",
+    "RegistrationExpiry": "2025-11-27T14:38:59.4427434Z"
   },
   {
     "Id": 6,
-    "Make": "Subaru",
-    "Model": "Outback",
-    "RegistrationNumber": "UTL472",
-    "RegistrationExpiry": "2025-11-08T05:33:35.5308829Z"
+    "Make": "Mazda",
+    "Model": "BT-50",
+    "Plate": "XLP206",
+    "RegistrationExpiry": "2025-11-27T14:38:59.442744Z"
   },
   {
     "Id": 7,
     "Make": "Toyota",
-    "Model": "Hilux",
-    "RegistrationNumber": "BFG510",
-    "RegistrationExpiry": "2025-11-20T05:39:35.5308832Z"
+    "Model": "RAV4",
+    "Plate": "YAR392",
+    "RegistrationExpiry": "2025-11-27T14:36:59.4427442Z"
   },
   {
     "Id": 8,
-    "Make": "Mazda",
-    "Model": "Mazda3",
-    "RegistrationNumber": "ONC397",
-    "RegistrationExpiry": "2025-11-20T05:37:35.5308835Z"
+    "Make": "Hyundai",
+    "Model": "i30",
+    "Plate": "KKB426",
+    "RegistrationExpiry": "2025-11-27T14:44:59.4427444Z"
   },
   {
     "Id": 9,
-    "Make": "Kia",
-    "Model": "Sportage",
-    "RegistrationNumber": "CQJ520",
-    "RegistrationExpiry": "2025-11-20T05:43:35.5308839Z"
+    "Make": "Toyota",
+    "Model": "Camry",
+    "Plate": "FHR265",
+    "RegistrationExpiry": "2025-11-27T14:42:59.4427445Z"
   },
   {
     "Id": 10,
-    "Make": "Nissan",
-    "Model": "Qashqai",
-    "RegistrationNumber": "HRF945",
-    "RegistrationExpiry": "2025-10-14T05:33:35.5308842Z"
+    "Make": "Volkswagen",
+    "Model": "Golf",
+    "Plate": "KLY926",
+    "RegistrationExpiry": "2025-11-27T14:37:59.4427448Z"
   },
   {
     "Id": 11,
     "Make": "Kia",
-    "Model": "Sorento",
-    "RegistrationNumber": "MNA794",
-    "RegistrationExpiry": "2025-11-20T05:34:35.5308845Z"
+    "Model": "Cerato",
+    "Plate": "KJB430",
+    "RegistrationExpiry": "2025-11-27T14:41:59.4427449Z"
+  },
+  {
+    "Id": 12,
+    "Make": "Volkswagen",
+    "Model": "Tiguan",
+    "Plate": "DAE391",
+    "RegistrationExpiry": "2025-11-27T14:39:59.442745Z"
+  },
+  {
+    "Id": 13,
+    "Make": "Nissan",
+    "Model": "Qashqai",
+    "Plate": "SCP249",
+    "RegistrationExpiry": "2025-11-27T14:41:59.4427452Z"
+  },
+  {
+    "Id": 14,
+    "Make": "Subaru",
+    "Model": "XV",
+    "Plate": "QQY829",
+    "RegistrationExpiry": "2025-11-23T14:35:59.4427453Z"
+  },
+  {
+    "Id": 15,
+    "Make": "Nissan",
+    "Model": "Qashqai",
+    "Plate": "AVP146",
+    "RegistrationExpiry": "2025-11-27T14:38:59.4427455Z"
+  },
+  {
+    "Id": 16,
+    "Make": "Volkswagen",
+    "Model": "Amarok",
+    "Plate": "DFW296",
+    "RegistrationExpiry": "2025-10-02T14:35:59.4427456Z"
+  },
+  {
+    "Id": 17,
+    "Make": "Mitsubishi",
+    "Model": "Triton",
+    "Plate": "LVS627",
+    "RegistrationExpiry": "2025-11-27T14:36:59.4427458Z"
+  },
+  {
+    "Id": 18,
+    "Make": "Hyundai",
+    "Model": "i30",
+    "Plate": "KTE208",
+    "RegistrationExpiry": "2025-09-27T14:35:59.442746Z"
   }
 ]

@@ -1,255 +1,175 @@
-# 🚀 Fleet – Full Stack Demo (React + .NET 10 + SignalR)
+# 📘 Fleet Manager — Full-Stack Take-Home Project
 
-Fleet is a complete demonstration project showcasing a modern full‑stack architecture using:
+A small full-stack system for managing vehicles and their registration status.  
+The solution includes:
 
-- **.NET 10 Web API**
-- **React + Material UI**
-- **SignalR real‑time communication**
-- **Background services**
-- **Dynamic JSON seeding**
-- **Unit tests for frontend and backend**
+- A **.NET backend** that exposes car data and pushes live registration updates via **SignalR**
+- A **React + Vite + Tailwind** frontend with a clean Azure-style UI
+- A **background service** checking for expired registrations
+- A modern, polished UX demonstrating good engineering and design principles
 
-This project is designed as a professional portfolio piece and interview demonstration tool.
-
----
-
-# 📦 Project Structure
-
-```
-Fleet/
- ├── Fleet.Api/               # Backend (.NET 10 Web API)
- │    ├── Controllers/
- │    ├── BackgroundServices/
- │    ├── Hubs/
- │    ├── Repositories/
- │    ├── JsonDataSeeder.cs
- │    ├── appsettings.json
- │    └── Program.cs
- │
- └── fleet-frontend/          # Frontend (React + MUI)
-      ├── src/
-      │    ├── components/
-      │    ├── pages/
-      │    ├── layout/
-      │    ├── hooks/
-      │    ├── lib/
-      │    ├── tests/
-      │    └── setupTests.js
-      └── package.json
-```
+This project is built to showcase code quality, structure, and real-world UI/UX polish.
 
 ---
 
-# ✅ 1. Running the Backend (Fleet.Api)
+## 🚗 Features
 
-### Requirements
-- .NET 10 (Preview acceptable)
-- VS2025 or CLI
+### Cars Page (`/`)
+- Fetches a list of cars from the API  
+- Optional `make` filter (triggered on **Enter** key)  
+- Responsive, scrollable table with sticky header  
+- License plates rendered in fixed-width font for clarity  
+- Clean, Azure-themed UI
 
-### Start API
+### Registration Page (`/registration`)
+- Shows the *current* registration status of all cars  
+- Displays **Valid / Expired** status with visual badges  
+- Live updates via **SignalR**  
+- Updated rows briefly highlight for visibility  
+- Responsive scrollable table with sticky header  
 
-```bash
-cd Fleet.Api
+### UI/UX
+- Fixed top navigation with active page highlight  
+- Fixed footer  
+- Soft blue background (Azure-inspired)  
+- Page fade-in transitions  
+- Modern **Inter** font  
+- Clean spacing, consistent line heights  
+- Tailwind CSS v4 (no custom config required)
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+- **React 19**
+- **Vite 5**
+- **Tailwind CSS v4**
+- **Inter font (Google Fonts)**
+- **React Router 6**
+- **SignalR client (`@microsoft/signalr`)**
+
+### Backend
+- **.NET**
+- **Minimal APIs**
+- **SignalR**
+- **Background worker** to detect expirations
+- **DTO-based API**
+- CORS + HTTPS support
+
+---
+
+## 📂 Folder Structure (Frontend)
+
+```
+src/
+  ├── App.jsx
+  ├── AppLayout.jsx
+  ├── CarsPage.jsx
+  ├── RegistrationPage.jsx
+  ├── index.css
+  └── main.jsx
+public/
+README.md
+vite.config.js
+package.json
+```
+
+---
+
+## ▶️ Running the Project
+
+### Backend
+Start your existing .NET backend:
+
+```
 dotnet run
 ```
 
-### What happens at startup?
-
-- `JsonDataSeeder` creates a fresh randomized `cars.json`.
-- `CarRepository` loads seeded cars.
-- Background service (`RegistrationCheckService`) begins periodic expiry checking.
-- SignalR Hub starts at:
+Serves:
 
 ```
-/hubs/registration
+https://localhost:5001/api/cars
+https://localhost:5001/api/registration
+https://localhost:5001/hubs/registration
 ```
 
-### API Endpoints
-
-| Endpoint | Description |
-|---------|-------------|
-| **GET /cars** | Returns all cars or filter by make |
-| **GET /registration/statuses** | Returns current registration statuses |
-| **SignalR Hub** | `/hubs/registration` |
+Ensure HTTPS certificates are trusted.
 
 ---
-
-# 🎨 2. Running the Frontend (React + MUI)
-
-### Requirements
-- Node 18+
-- NPM
-
-### Start React app
-
-```bash
-cd fleet-frontend
-npm install
-npm start
-```
-
-The frontend runs at:
-
-```
-http://localhost:3000
-```
-
-### Frontend Routes
-
-| Route | Page | Description |
-|-------|-------|-------------|
-| `/` | Cars Page | Displays vehicle list |
-| `/registration` | Registration Page | Shows real‑time registration status |
-
----
-
-# 🔄 3. Real‑Time Demo (SignalR)
-
-To demonstrate real‑time updates:
-
-1. Start API  
-2. Open `http://localhost:3000/registration`
-3. Wait 10 seconds  
-4. Background service checks for newly expired registrations  
-5. SignalR pushes updates to the browser  
-6. UI updates without refresh  
-7. HubStatusIndicator reflects connection state:
-   - 🟢 Connected  
-   - 🔴 Disconnected  
-   - 🔁 Reconnecting  
-
-Stopping the API will show a disconnection indicator.
-
----
-
-# 🧪 4. Frontend Unit Testing
-
-Uses:
-
-- Jest  
-- React Testing Library  
-- Custom mocks for SignalR  
-- Custom test utilities
-
-### Run tests
-
-```bash
-cd fleet-frontend
-npm test
-```
-
-### Frontfrontend tests include:
-
-- **CarsPage.test.js** – verifies table and API integration (mocked)
-- **RegistrationPage.test.js** – verifies API load + SignalR push events
-- **HubStatusIndicator.test.js** – UI chip rendering
-- **test-utils.js** – shared helper
-
----
-
-# 🧪 5. Backend Unit Testing
-
-Uses:
-
-- xUnit / MSTest / NUnit (your choice)
-- Mocked:
-  - `ICarRepository`
-  - `IHubContext`
-  - `IHubClients`
-  - Background service configuration
-
-### Run backend tests
-
-```bash
-cd Fleet.Api.Tests
-dotnet test
-```
-
-### Backend tests include:
-
-- **CarControllerTests**
-- **RegistrationControllerTests**
-- **CarRepositoryTests**
-- **RegistrationCheckServiceTests**
-
----
-
-# 🎬 6. Demo Script (For Interviews)
-
-A clean 2–3 minute flow:
-
-1. Start API (`dotnet run`)
-2. Show `/cars` output in browser
-3. Start frontend (`npm start`)
-4. Show Cars page
-5. Navigate to Registration Status page
-6. Explain:
-   - Background service  
-   - JSON seeding  
-   - SignalR hub  
-   - Incremental expiration update logic  
-7. Wait 10 seconds → observe real‑time updates
-8. Stop backend → observe SignalR disconnect indicator
-9. Restart backend → reconnection
-10. Run tests:
-    - `npm test`
-    - `dotnet test`
-
-This demonstrates:
-
-- Full‑stack architecture
-- Real‑time system
-- Background microservice logic
-- React + MUI UI/UX
-- Automated testing
-
----
-
-# 🧰 7. Technology Stack
-
-### Backend
-- .NET 10 Web API
-- SignalR
-- BackgroundService
-- Dependency Injection
-- Strongly‑typed configuration
-- JSON persistence
 
 ### Frontend
-- React 18
-- Material UI (MUI)
-- React Router
-- SignalR client
-- Custom hooks
-- PageLayout system
 
-### Testing
-- Jest + React Testing Library
-- xUnit / MSTest
-- Mocked repositories + hub contexts
-- Snapshot‑free functional testing
+Install dependencies:
 
----
+```
+npm install
+```
 
-# 🎁 8. Notes for Reviewers / Interviewers
+Run dev server:
 
-This project showcases:
+```
+npm run dev
+```
 
-✔ Real‑time system design  
-✔ Clean architecture & component separation  
-✔ Modern full‑stack development  
-✔ Asynchronous background processing  
-✔ React/MUI professional UI  
-✔ Automated test suite  
-✔ Good developer workflow and folder structure  
+Frontend:
 
-It is intended as a **demonstration-quality** project.
+```
+http://localhost:5173
+```
+
+Vite proxy automatically forwards API calls to the backend.
 
 ---
 
-# 🙌 Author
+## 🔧 Configuration
 
-Created by **Stephen Wu**  
-Assisted by Frank 🤝  
-(Your friendly AI collaborator)
+Proxy configuration in `vite.config.js`:
 
+```js
+server: {
+  proxy: {
+    "/api": "https://localhost:5001",
+    "/hubs": "https://localhost:5001"
+  }
+}
+```
+
+Frontend uses relative URLs:
+
+```js
+fetch("/api/cars")
+fetch("/api/registration")
+new HubConnectionBuilder().withUrl("/hubs/registration")
+```
+
+---
+
+## 🎨 Design Notes
+
+This UI focuses on:
+
+- Clean Azure dashboard aesthetic  
+- White cards over soft blue background  
+- Sticky headers and consistent row height  
+- Monospace styling for plate numbers  
+- Modern typography with Inter  
+- Lightweight fade transitions  
+- Professional table layout with responsive scroll  
+
+---
+
+## 📡 SignalR Live Updates
+
+- Background service checks for expired registrations  
+- Backend pushes **deltas only**  
+- Frontend merges updates into existing list  
+- Status badges update instantly  
+
+---
+
+## 👤 Author
+
+**Stephen Wu**  
+Full Stack Developer — Perth, Australia  
+Experience in .NET, React, fleet optimisation, e-commerce, and platform modernisation.
