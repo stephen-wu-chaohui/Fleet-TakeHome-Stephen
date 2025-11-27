@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Fleet.Api/.vs
+/Fleet.Api/bin
+/fleet-vite/dist
+/fleet-vite/node_modules
+/fleet-vite/package-lock.json
