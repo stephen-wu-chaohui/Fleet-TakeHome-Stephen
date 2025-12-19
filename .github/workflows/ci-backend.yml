@@ -26,4 +26,4 @@ jobs:
         run: dotnet build Fleet.Api/Fleet.Api.slnx --configuration Release --no-restore
 
       - name: Run unit tests
-        run: dotnet test Fleet.Api/Fleet.Api.Tests/Fleet.Api.Tests.csproj --configuration Release --no-build
+        run: dotnet test Fleet.Api.Tests/Fleet.Api.Tests.csproj --configuration Release --no-build
