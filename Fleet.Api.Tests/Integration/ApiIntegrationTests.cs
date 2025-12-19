@@ -22,7 +22,6 @@ namespace Fleet.Api.Tests.Integration
 
         [Fact]
         public async Task GetCars_withMake_ReturnsNonEmptyList() {
-            await Task.Delay(TimeSpan.FromSeconds(3), CancellationToken.None);
             var make = "Toyota";
             var cars = await _client.GetFromJsonAsync<List<object>>($"/api/cars?make={make}");
             Assert.NotNull(cars);
@@ -31,7 +30,6 @@ namespace Fleet.Api.Tests.Integration
 
         [Fact] 
         public async Task GetCars_withUnknownMake_ReturnsNonEmptyList() {
-            await Task.Delay(TimeSpan.FromSeconds(3), CancellationToken.None);
             var make = "[]";
             var cars = await _client.GetFromJsonAsync<List<object>>($"/api/cars?make={make}");
             Assert.NotNull(cars);

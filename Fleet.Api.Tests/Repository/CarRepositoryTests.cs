@@ -52,7 +52,7 @@ public class CarRepositoryTests {
     }
 
     [Fact]
-    public void Constructor_LoadsCarsSuccessfully() {
+    public async Task Constructor_LoadsCarsSuccessfully() {
         // Arrange
         var root = PreparePath();
         var env = new FakeHostEnvironment(root);
@@ -67,7 +67,7 @@ public class CarRepositoryTests {
         var repo = new CarRepository(env);
 
         // Assert
-        var cars = repo.GetAllAsync(null).Result;
+        var cars = await repo.GetAllAsync(null);
         cars.Should().HaveCount(1);
         cars.First().Make.Should().Be("Toyota");
     }
@@ -78,7 +78,7 @@ public class CarRepositoryTests {
     // -----------------------
 
     [Fact]
-    public void GetAllAsync_FiltersByMake_CaseInsensitive() {
+    public async Task GetAllAsync_FiltersByMake_CaseInsensitive() {
         // Arrange
         var root = PreparePath();
         var env = new FakeHostEnvironment(root);
@@ -93,7 +93,7 @@ public class CarRepositoryTests {
         var repo = new CarRepository(env);
 
         // Act
-        var result = repo.GetAllAsync("toyota").Result;
+        var result = await repo.GetAllAsync("toyota");
 
         // Assert
         result.Should().HaveCount(1);
@@ -101,7 +101,7 @@ public class CarRepositoryTests {
     }
 
     [Fact]
-    public void GetAllAsync_NullMakeInSource_IsSafe() {
+    public async Task GetAllAsync_NullMakeInSource_IsSafe() {
         // Arrange
         var root = PreparePath();
         var env = new FakeHostEnvironment(root);
@@ -116,7 +116,7 @@ public class CarRepositoryTests {
         var repo = new CarRepository(env);
 
         // Act
-        var result = repo.GetAllAsync("Toyota").Result;
+        var result = await repo.GetAllAsync("Toyota");
 
         // Assert
         result.Should().ContainSingle(x => x.Make == "Toyota");
@@ -128,7 +128,7 @@ public class CarRepositoryTests {
     // -----------------------
 
     [Fact]
-    public void GetAllWithExpiryAsync_CalculatesIsExpiredFlag() {
+    public async Task GetAllWithExpiryAsync_CalculatesIsExpiredFlag() {
         // Arrange
         var root = PreparePath();
         var env = new FakeHostEnvironment(root);
@@ -143,7 +143,7 @@ public class CarRepositoryTests {
         var repo = new CarRepository(env);
 
         // Act
-        var expiry = repo.GetAllWithExpiryAsync().Result;
+        var expiry = await repo.GetAllWithExpiryAsync();
 
         // Assert
         expiry.Should().HaveCount(2);
@@ -156,7 +156,7 @@ public class CarRepositoryTests {
     // -----------------------
 
     [Fact]
-    public void GetExpiryUpdateAsync_ReturnsNewlyExpiredOnly() {
+    public async Task GetExpiryUpdateAsync_ReturnsNewlyExpiredOnly() {
         // Arrange
         var root = PreparePath();
         var env = new FakeHostEnvironment(root);
@@ -173,10 +173,10 @@ public class CarRepositoryTests {
         var repo = new CarRepository(env);
 
         // First call sets the window
-        var initialRun = repo.GetExpiryUpdateAsync().Result;
+        var initialRun = await repo.GetExpiryUpdateAsync();
 
         // Nothing should be emitted now — no new events
-        var secondRun = repo.GetExpiryUpdateAsync().Result;
+        var secondRun = await repo.GetExpiryUpdateAsync();
 
         // Assert
         initialRun.Should().NotBeEmpty();   // initial delta from DateTime.MinValue
