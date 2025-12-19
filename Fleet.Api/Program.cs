@@ -6,6 +6,9 @@ using Microsoft.Azure.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Azure App Service: force HTTP only
+builder.WebHost.UseUrls("http://0.0.0.0:8080");
+
 // Prepare fresh JSON every time API starts
 if (!builder.Environment.IsEnvironment("Test")) {
     JsonDataSeeder.CreateCarDataFile(builder.Environment);
