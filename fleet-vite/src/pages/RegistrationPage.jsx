@@ -23,7 +23,7 @@ export default function RegistrationPage() {
   //
   useEffect(() => {
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("/hubs/registration")
+      .withUrl(`${import.meta.env.VITE_API_BASE_URL}/hub`)
       .withAutomaticReconnect()
       .build();
 

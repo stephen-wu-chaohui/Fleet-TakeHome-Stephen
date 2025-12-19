@@ -3,11 +3,11 @@ using System.Net.Http.Json;
 
 namespace Fleet.Api.Tests.Integration
 {
-    public class ApiIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
+    public class ApiIntegrationTests : IClassFixture<TestWebApplicationFactory>
     {
         private readonly HttpClient _client;
 
-        public ApiIntegrationTests(WebApplicationFactory<Program> factory)
+        public ApiIntegrationTests(TestWebApplicationFactory factory)
         {
             _client = factory.CreateClient();
         }
@@ -23,7 +23,7 @@ namespace Fleet.Api.Tests.Integration
         [Fact]
         public async Task GetCars_withMake_ReturnsNonEmptyList() {
             await Task.Delay(TimeSpan.FromSeconds(3), CancellationToken.None);
-            var make = "Honda";
+            var make = "Toyota";
             var cars = await _client.GetFromJsonAsync<List<object>>($"/api/cars?make={make}");
             Assert.NotNull(cars);
             Assert.NotEmpty(cars);

@@ -1,128 +1,121 @@
 [
   {
     "Id": 1,
-    "Make": "Nissan",
-    "Model": "Qashqai",
-    "Plate": "GOU924",
-    "RegistrationExpiry": "2025-11-27T14:36:59.4426872Z"
+    "Make": "Ford",
+    "Model": "Focus",
+    "Plate": "SZY273",
+    "RegistrationExpiry": "2025-12-19T02:14:12.3698826Z"
   },
   {
     "Id": 2,
-    "Make": "Kia",
-    "Model": "Cerato",
-    "Plate": "QBC696",
-    "RegistrationExpiry": "2025-11-11T14:35:59.442742Z"
+    "Make": "Subaru",
+    "Model": "XV",
+    "Plate": "IOE226",
+    "RegistrationExpiry": "2025-12-19T02:08:12.3700163Z"
   },
   {
     "Id": 3,
-    "Make": "Ford",
-    "Model": "Focus",
-    "Plate": "GJJ440",
-    "RegistrationExpiry": "2025-11-27T14:36:59.442743Z"
+    "Make": "Mazda",
+    "Model": "BT-50",
+    "Plate": "MFI611",
+    "RegistrationExpiry": "2025-12-19T02:11:12.370017Z"
   },
   {
     "Id": 4,
-    "Make": "Volkswagen",
-    "Model": "Golf",
-    "Plate": "YUF113",
-    "RegistrationExpiry": "2025-10-09T14:35:59.4427432Z"
+    "Make": "Subaru",
+    "Model": "Outback",
+    "Plate": "RAH354",
+    "RegistrationExpiry": "2025-12-19T02:08:12.3700172Z"
   },
   {
     "Id": 5,
-    "Make": "Ford",
-    "Model": "Everest",
-    "Plate": "EXK475",
-    "RegistrationExpiry": "2025-11-27T14:38:59.4427434Z"
+    "Make": "Hyundai",
+    "Model": "Santa Fe",
+    "Plate": "TYK556",
+    "RegistrationExpiry": "2025-11-21T02:04:12.3700174Z"
   },
   {
     "Id": 6,
-    "Make": "Mazda",
-    "Model": "BT-50",
-    "Plate": "XLP206",
-    "RegistrationExpiry": "2025-11-27T14:38:59.442744Z"
+    "Make": "Ford",
+    "Model": "Ranger",
+    "Plate": "FBA122",
+    "RegistrationExpiry": "2025-10-31T02:04:12.3700186Z"
   },
   {
     "Id": 7,
-    "Make": "Toyota",
-    "Model": "RAV4",
-    "Plate": "YAR392",
-    "RegistrationExpiry": "2025-11-27T14:36:59.4427442Z"
+    "Make": "Volkswagen",
+    "Model": "Golf",
+    "Plate": "JCG409",
+    "RegistrationExpiry": "2025-12-19T02:09:12.3700188Z"
   },
   {
     "Id": 8,
     "Make": "Hyundai",
     "Model": "i30",
-    "Plate": "KKB426",
-    "RegistrationExpiry": "2025-11-27T14:44:59.4427444Z"
+    "Plate": "HFD704",
+    "RegistrationExpiry": "2025-10-16T02:04:12.370019Z"
   },
   {
     "Id": 9,
-    "Make": "Toyota",
-    "Model": "Camry",
-    "Plate": "FHR265",
-    "RegistrationExpiry": "2025-11-27T14:42:59.4427445Z"
+    "Make": "Mazda",
+    "Model": "BT-50",
+    "Plate": "VMY708",
+    "RegistrationExpiry": "2025-12-19T02:11:12.3700192Z"
   },
   {
     "Id": 10,
-    "Make": "Volkswagen",
-    "Model": "Golf",
-    "Plate": "KLY926",
-    "RegistrationExpiry": "2025-11-27T14:37:59.4427448Z"
+    "Make": "Ford",
+    "Model": "Focus",
+    "Plate": "DFG771",
+    "RegistrationExpiry": "2025-12-19T02:09:12.3700195Z"
   },
   {
     "Id": 11,
-    "Make": "Kia",
-    "Model": "Cerato",
-    "Plate": "KJB430",
-    "RegistrationExpiry": "2025-11-27T14:41:59.4427449Z"
+    "Make": "Hyundai",
+    "Model": "i30",
+    "Plate": "AEY615",
+    "RegistrationExpiry": "2025-12-19T02:06:12.3700197Z"
   },
   {
     "Id": 12,
-    "Make": "Volkswagen",
-    "Model": "Tiguan",
-    "Plate": "DAE391",
-    "RegistrationExpiry": "2025-11-27T14:39:59.442745Z"
+    "Make": "Toyota",
+    "Model": "Hilux",
+    "Plate": "XZX263",
+    "RegistrationExpiry": "2025-12-19T02:06:12.3700199Z"
   },
   {
     "Id": 13,
-    "Make": "Nissan",
-    "Model": "Qashqai",
-    "Plate": "SCP249",
-    "RegistrationExpiry": "2025-11-27T14:41:59.4427452Z"
+    "Make": "Volkswagen",
+    "Model": "Amarok",
+    "Plate": "VSH646",
+    "RegistrationExpiry": "2025-12-19T02:05:12.3700201Z"
   },
   {
     "Id": 14,
-    "Make": "Subaru",
-    "Model": "XV",
-    "Plate": "QQY829",
-    "RegistrationExpiry": "2025-11-23T14:35:59.4427453Z"
+    "Make": "Ford",
+    "Model": "Everest",
+    "Plate": "JZT376",
+    "RegistrationExpiry": "2025-12-10T02:04:12.3700203Z"
   },
   {
     "Id": 15,
-    "Make": "Nissan",
-    "Model": "Qashqai",
-    "Plate": "AVP146",
-    "RegistrationExpiry": "2025-11-27T14:38:59.4427455Z"
+    "Make": "Ford",
+    "Model": "Ranger",
+    "Plate": "EWD839",
+    "RegistrationExpiry": "2025-12-19T02:10:12.3700204Z"
   },
   {
     "Id": 16,
-    "Make": "Volkswagen",
-    "Model": "Amarok",
-    "Plate": "DFW296",
-    "RegistrationExpiry": "2025-10-02T14:35:59.4427456Z"
+    "Make": "Toyota",
+    "Model": "RAV4",
+    "Plate": "PGH497",
+    "RegistrationExpiry": "2025-10-02T02:04:12.3700206Z"
   },
   {
     "Id": 17,
-    "Make": "Mitsubishi",
-    "Model": "Triton",
-    "Plate": "LVS627",
-    "RegistrationExpiry": "2025-11-27T14:36:59.4427458Z"
-  },
-  {
-    "Id": 18,
-    "Make": "Hyundai",
-    "Model": "i30",
-    "Plate": "KTE208",
-    "RegistrationExpiry": "2025-09-27T14:35:59.442746Z"
+    "Make": "Toyota",
+    "Model": "Camry",
+    "Plate": "YNU984",
+    "RegistrationExpiry": "2025-12-19T02:05:12.3700208Z"
   }
 ]
