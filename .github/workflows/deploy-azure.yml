@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  DOTNET_VERSION: "8.0.x"
+  DOTNET_VERSION: "10.0.x"
   BACKEND_APP_NAME: fleet-takehome-api
   FRONTEND_APP_NAME: fleet-takehome-web
 
@@ -30,7 +30,7 @@ jobs:
 
       - name: Publish backend
         run: |
-          dotnet publish Fleet.Api/Fleet.Api/Fleet.Api.csproj \
+          dotnet publish Fleet.Api/Fleet.Api.csproj \
             -c Release \
             -o backend_publish
 
