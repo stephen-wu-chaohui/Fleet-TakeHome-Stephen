@@ -7,7 +7,9 @@ using Microsoft.Azure.SignalR;
 var builder = WebApplication.CreateBuilder(args);
 
 // Prepare fresh JSON every time API starts
-JsonDataSeeder.CreateCarDataFile(builder.Environment);
+if (!builder.Environment.IsEnvironment("Test")) {
+    JsonDataSeeder.CreateCarDataFile(builder.Environment);
+}
 
 // Add services
 if (!builder.Environment.IsEnvironment("Test"))
