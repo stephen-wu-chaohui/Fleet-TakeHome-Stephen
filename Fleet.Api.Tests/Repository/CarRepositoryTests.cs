@@ -60,7 +60,7 @@ public class CarRepositoryTests {
         var file = Path.Combine(root, "wwwroot", "data", "cars.json");
         WriteJson(file, new[]
         {
-            new { Id = 12, Make = "Toyota", Plate = "ABC123", RegistrationExpiry = DateTime.UtcNow }
+            new { Id = 12, Make = (string?)"Toyota", Plate = "ABC123", RegistrationExpiry = DateTime.UtcNow }
         });
 
         // Act
@@ -86,8 +86,8 @@ public class CarRepositoryTests {
 
         WriteJson(file, new[]
         {
-            new { Id = 11, Make = "Toyota", Plate = "AAA111", RegistrationExpiry = DateTime.UtcNow },
-            new { Id = 12, Make = "Honda", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow }
+            new { Id = 11, Make = (string?)"Toyota", Plate = "AAA111", RegistrationExpiry = DateTime.UtcNow },
+            new { Id = 12, Make = (string?)"Honda", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow }
         });
 
         var repo = new CarRepository(env);
@@ -110,7 +110,7 @@ public class CarRepositoryTests {
         WriteJson(file, new[]
         {
             new { Id = 11, Make = (string?)null, Plate = "AAA111", RegistrationExpiry = DateTime.UtcNow },
-            new { Id = 12, Make = "Toyota", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow }
+            new { Id = 12, Make = (string?)"Toyota", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow }
         });
 
         var repo = new CarRepository(env);
@@ -136,8 +136,8 @@ public class CarRepositoryTests {
 
         WriteJson(file, new[]
         {
-            new { Id = 11, Make = "Toyota", Plate = "AAA111", RegistrationExpiry = DateTime.UtcNow.AddDays(-1) },
-            new { Id = 12, Make = "Honda", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow.AddDays(5) }
+            new { Id = 11, Make = (string?)"Toyota", Plate = "AAA111", RegistrationExpiry = DateTime.UtcNow.AddDays(-1) },
+            new { Id = 12, Make = (string?)"Honda", Plate = "BBB222", RegistrationExpiry = DateTime.UtcNow.AddDays(5) }
         });
 
         var repo = new CarRepository(env);
@@ -166,8 +166,8 @@ public class CarRepositoryTests {
 
         WriteJson(file, new[]
         {
-            new { Id = 11, Make = "Toyota", Plate="AAA111", RegistrationExpiry = now.AddSeconds(-1) },
-            new { Id = 12, Make = "Honda",  Plate="BBB222", RegistrationExpiry = now.AddSeconds(10) }
+            new { Id = 11, Make = (string?)"Toyota", Plate="AAA111", RegistrationExpiry = now.AddSeconds(-1) },
+            new { Id = 12, Make = (string?)"Honda",  Plate="BBB222", RegistrationExpiry = now.AddSeconds(10) }
         });
 
         var repo = new CarRepository(env);
