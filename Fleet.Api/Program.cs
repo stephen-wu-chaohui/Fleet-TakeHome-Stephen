@@ -2,6 +2,7 @@ using Fleet.Api.Hubs;
 using Fleet.Api.Repositories;
 using Fleet.Api.Services;
 using Fleet.Api.Services.Startup;
+using Microsoft.Azure.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 JsonDataSeeder.CreateCarDataFile(builder.Environment);
 
 // Add services
-builder.Services.AddSignalR();
+if (!builder.Environment.IsEnvironment("Test"))
+{
+    builder.Services.AddSignalR()
+        .AddAzureSignalR();
+}
+else
+{
+    builder.Services.AddSignalR();
+}
 builder.Services.AddSingleton<ICarRepository, CarRepository>();
 builder.Services.AddHostedService<RegistrationCheckService>();
 
