@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as signalR from "@microsoft/signalr";
+import { env } from "../config/env";
 
 export default function RegistrationPage() {
   const [statusList, setStatusList] = useState([]);
@@ -10,7 +11,8 @@ export default function RegistrationPage() {
   //
   useEffect(() => {
     async function loadInitial() {
-      const res = await fetch("/api/registration");
+      const url = `${env.apiBaseUrl}/api/registration`;
+      const res = await fetch(url);
       const data = await res.json();
       setStatusList(data);
       setLoading(false);
@@ -23,7 +25,7 @@ export default function RegistrationPage() {
   //
   useEffect(() => {
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl(`${import.meta.env.VITE_API_BASE_URL}/hub`)
+      .withUrl(env.signalRHubUrl)
       .withAutomaticReconnect()
       .build();
 
