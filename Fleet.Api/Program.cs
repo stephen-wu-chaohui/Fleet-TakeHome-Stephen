@@ -6,10 +6,7 @@ using Microsoft.Azure.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// ----------------------------------------------------------------------
-// Data seeding
-// ----------------------------------------------------------------------
+// Prepare fresh JSON every time API starts
 // Generate fresh demo data only outside Test environment
 if (!builder.Environment.IsEnvironment("Test")) {
     JsonDataSeeder.CreateCarDataFile(builder.Environment);
