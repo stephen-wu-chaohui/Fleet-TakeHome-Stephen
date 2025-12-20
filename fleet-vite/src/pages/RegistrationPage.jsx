@@ -25,7 +25,7 @@ export default function RegistrationPage() {
   //
   useEffect(() => {
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl(`${env.apiBaseUrl}/hubs/registration`)
+      .withUrl(`${env.apiBaseUrl}/hubs/registration`)
       .withAutomaticReconnect()
       .build();
 
