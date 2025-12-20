@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { env } from "../config/env";
 
 export default function CarsPage() {
   const [cars, setCars] = useState([]);
@@ -8,7 +9,9 @@ export default function CarsPage() {
   useEffect(() => {
     async function load() {
       setLoading(true);
-      const url = make ? `/api/cars?make=${make}` : "/api/cars";
+      const url = make
+        ? `${env.apiBaseUrl}/api/cars?make=${encodeURIComponent(make)}`
+        : `${env.apiBaseUrl}/api/cars`;
       const res = await fetch(url);
       const data = await res.json();
       setCars(data);
