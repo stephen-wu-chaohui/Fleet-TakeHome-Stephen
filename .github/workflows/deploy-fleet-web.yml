@@ -6,6 +6,10 @@ on:
       - main
       - release/**
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   WEBAPP_NAME: fleet-takehome-www
   RESOURCE_GROUP: PlanCare
