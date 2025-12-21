@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - release/**
+
 env:
   WEBAPP_NAME: fleet-takehome-www
   RESOURCE_GROUP: PlanCare
@@ -24,17 +25,20 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Restore & Test Backend
-      run: |
-        dotnet restore Fleet.Api/Fleet.Api.slnx
-        dotnet test Fleet.Api/Fleet.Api.Tests/Fleet.Api.Tests.csproj --configuration Release
+      run: dotnet test Fleet.Api/Fleet.Api.slnx --configuration Release
 
     - name: Publish Backend
       run: |
-        dotnet publish Fleet.Api/Fleet.Api/Fleet.Api.csproj \
+        dotnet publish Fleet.Api/Fleet.Api.csproj \
           -c Release \
           -o publish/app
 
     # ---------- Frontend ----------
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
     - name: Build Frontend
       working-directory: fleet-vite
       run: |
