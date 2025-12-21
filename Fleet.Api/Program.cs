@@ -12,23 +12,6 @@ if (!builder.Environment.IsEnvironment("Test")) {
     JsonDataSeeder.CreateCarDataFile(builder.Environment);
 }
 
-// ----------------------------------------------------------------------
-// CORS (configured via appsettings.*.json)
-// ----------------------------------------------------------------------
-var allowedOrigins =
-    builder.Configuration
-           .GetSection("Cors:AllowedOrigins")
-           .Get<string[]>() ?? Array.Empty<string>();
-
-builder.Services.AddCors(options => {
-    options.AddDefaultPolicy(policy => {
-        policy
-            .WithOrigins(allowedOrigins)
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
-});
 
 // ----------------------------------------------------------------------
 // SignalR
@@ -48,10 +31,9 @@ builder.Services.AddHostedService<RegistrationCheckService>();
 
 var app = builder.Build();
 
-// ----------------------------------------------------------------------
-// Middleware
-// ----------------------------------------------------------------------
-app.UseCors();
+// Static frontend
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 // ----------------------------------------------------------------------
 // API endpoints
@@ -70,5 +52,8 @@ app.MapGet("/api/registration", async (ICarRepository repo) => {
 // SignalR hubs
 // ----------------------------------------------------------------------
 app.MapHub<RegistrationHub>("/hubs/registration");
+
+// SPA fallback
+app.MapFallbackToFile("index.html");
 
 app.Run();
