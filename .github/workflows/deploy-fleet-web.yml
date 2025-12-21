@@ -1,0 +1,65 @@
+name: Build & Deploy Fleet (API + Web)
+
+on:
+  push:
+    branches:
+      - main
+      - release/**
+env:
+  WEBAPP_NAME: fleet-takehome-www
+  RESOURCE_GROUP: PlanCare
+  DOTNET_VERSION: 10.0.x
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # ---------- Backend ----------
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Restore & Test Backend
+      run: |
+        dotnet restore Fleet.Api/Fleet.Api.slnx
+        dotnet test Fleet.Api/Fleet.Api.Tests/Fleet.Api.Tests.csproj --configuration Release
+
+    - name: Publish Backend
+      run: |
+        dotnet publish Fleet.Api/Fleet.Api/Fleet.Api.csproj \
+          -c Release \
+          -o publish/app
+
+    # ---------- Frontend ----------
+    - name: Build Frontend
+      working-directory: fleet-vite
+      run: |
+        npm ci
+        npm run build
+
+    - name: Copy Frontend to wwwroot
+      run: |
+        rm -rf publish/app/wwwroot
+        mkdir -p publish/app/wwwroot
+        cp -r fleet-vite/dist/* publish/app/wwwroot/
+
+    # ---------- Azure Login ----------
+    - name: Azure Login (OIDC)
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    # ---------- Deploy ----------
+    - name: Deploy to Azure Web App
+      if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/release/')
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: ${{ env.WEBAPP_NAME }}
+        resource-group-name: ${{ env.RESOURCE_GROUP }}
+        package: publish/app
