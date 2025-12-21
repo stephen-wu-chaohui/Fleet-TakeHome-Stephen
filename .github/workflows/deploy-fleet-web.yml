@@ -63,11 +63,20 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    # ---------- Deploy ----------
-    - name: Deploy to Azure Web App
-      if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/release/')
+    # ---------- Deploy (Practice / Staging) ----------
+    - name: Deploy to fleet-takehome-www
+      if: startsWith(github.ref, 'refs/heads/release/')
       uses: azure/webapps-deploy@v3
       with:
-        app-name: ${{ env.WEBAPP_NAME }}
+        app-name: fleet-takehome-www
+        resource-group-name: ${{ env.RESOURCE_GROUP }}
+        package: publish/app
+
+    # ---------- Deploy (Final / Production) ----------
+    - name: Deploy to fleet-takehome-web
+      if: github.ref == 'refs/heads/main'
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: fleet-takehome-web
         resource-group-name: ${{ env.RESOURCE_GROUP }}
         package: publish/app
